@@ -4,8 +4,6 @@
 
 1. [Pug Templating](06-templating-pug.md)
 
-### [PostgreSQL](postgres)
-
 ### ORMs
 
 1. [Intro to ORMs](08-intro-to-ORMs.md)
