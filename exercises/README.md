@@ -2,7 +2,7 @@
 
 ### Templating
 
-1. [Pug Templating](06-templating-pug.md)
+1. :heavy_check_mark: [Pug Templating](https://github.com/kenziebottoms/nss-back-02-pug) :arrow_upper_right:
 
 ### ORMs
 
