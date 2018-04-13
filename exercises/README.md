@@ -6,7 +6,7 @@
 
 ### ORMs
 
-1. [Intro to ORMs](08-intro-to-ORMs.md)
+1. [Sequelize Relationships](06-sequelize-relationships.md)
 1. [Knex Migrations](08a-knex-migrations.md)
 1. [Knex Seeding](08b-knex-seeding.md)
 1. [Bookshelf Models](08c-bookshelf-models.md)
