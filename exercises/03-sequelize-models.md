@@ -1,7 +1,7 @@
 # Models
 Models are a representation in our code of how our data is structured in our database.
 
-When using Sequelize, creating a model with the CLI tool using `model:create` will actually generate 2 files for you: a model file and a corresponding migration file. We will look first at the model, then in the next exercise we'll get into what that migration file is all about.
+When using Sequelize, creating a model with the CLI tool using `model:create` will actually generate 2 files for you: a model file and a corresponding migration file. We will deal only with the model and ignore the heck out of that migration file.
 
 For our sandcastles project we will need some sandy locations to choose from, so start with a beach model:
 
@@ -9,35 +9,31 @@ For our sandcastles project we will need some sandy locations to choose from, so
 
 ```js
 'use strict';
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
   var Beach = sequelize.define('Beach', {
     name: DataTypes.STRING,
-    location: DataTypes.STRING,
-    sand_rating: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+    owner: DataTypes.STRING
+  }, {});
+  Beach.associate = function(models) {
+    // associations can be defined here
+  };
   return Beach;
 };
 ```
 
-Awesome, right? Also, unfortunately, a bit broken. As of this writing the CLI tool has not been updated to reflect recent breaking changes to how models need to be structured in Sequelize. You will need to update the file to look like this instead:
+Awesome, right? 
+
+That empty object right before the `.associate` property is where you can include options like `timestamps: false` and define your preferred table name (`tableName: "beaches"`) if you want to keep it lowercase.
 
 ```js
-// models/beach.js
-module.exports = function(sequelize, DataTypes) {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
   var Beach = sequelize.define('Beach', {
     name: DataTypes.STRING,
-    location: DataTypes.STRING,
-    sand_rating: DataTypes.INTEGER
-  });
-
-  Beach.associate = (models) => {
-
+    owner: DataTypes.STRING
+  }, {timestamps: false, tableName: "beaches"});
+  Beach.associate = function(models) {
+    // associations can be defined here
   };
   return Beach;
 };
@@ -51,12 +47,13 @@ Now that `associate` has been added as a property of a Beach, what the heck is i
 
 Beach.associate = function(models) {
   Beach.hasMany(models.Lifeguard, {
-    foreignKey: 'lifeguardId'
+    foreignKey: 'beach_id' //the same foreign key must be specified when you define the association on the lifeguard model.
   });
 };
 
 ...
 ```
+(When naming `foreignKey`s in your models, think of the 'hasMany' as sending the foreignKey, and the 'belongsTo' as receiving it.)
 ( For insight into how and when `associate` gets called, look at models/index.js )
 
 How can this model be useful? We can use the Beach model to easily create and add properties to a new beach instance without writing raw sql. Sequelize models are build using ES6 Class syntax. Don't worry that you haven't written Classes before. A JS Class is just syntactic sugar on top of javascript objects that delegate values and behavior via the prototype chain. Just keep in mind that every time you save a new user, song, todo, beach, or lifeguard to a database, you are creating a new instance of a User/Song/Todo/Beach/Lifeguard model.
@@ -111,7 +108,7 @@ Beach.getOne({name: 'Papohaku Beach', include: [{model: Lifeguard}] })
 });
 ```
 ### Next Steps
-Before moving on to migrations in the next exercise, create a Beach and a Lifeguard model with the CLI tool and update each in the current required syntax, as mentioned above
+Before moving on to the next exercise, create a Beach and a Lifeguard model with the CLI tool and update each in the current required syntax, as mentioned above
 
 ### Resources
 [Sequelize data types](http://docs.sequelizejs.com/variable/index.html#static-variable-DataTypes)
