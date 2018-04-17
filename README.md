@@ -5,3 +5,6 @@ A repo for notes and throwaway code associated with [this repo](https://github.c
 - [Exercises](exercises)
     - [Challenges](challenges)
 - [Learning Materials](learning-materials)
+
+## Resources
+- [Understanding passport.js auth flow](http://toon.io/understanding-passportjs-authentication-flow/)

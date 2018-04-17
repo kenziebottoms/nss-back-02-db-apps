@@ -7,12 +7,6 @@
 ### ORMs
 
 1. [Sequelize Relationships](06-sequelize-relationships.md)
-1. [Knex Migrations](08a-knex-migrations.md)
-1. [Knex Seeding](08b-knex-seeding.md)
-1. [Bookshelf Models](08c-bookshelf-models.md)
-1. [ORM Queries](08d-ORM-queries.md)
-1. [Bookshelf registry](08e-bookshelf-registry.md)
-1. [Avanced Bookshelf](08f-advanced-bookshelf.md)
 
 ### Security
 
