@@ -6,14 +6,12 @@
 
 ### ORMs
 
-1. [Intro to PostgreSQL](01-postgresql-intro.md)
-1. [Intro to ORMs](02-intro-to-ORMs.md)
-1. Sequelize
-    1. [Models](03-sequelize-models.md)
-    1. [Sync](04-sequelize-sync.md)
-    1. [Seeding](05-sequelize-seeding.md)
-    1. [Relationships](06-sequelize-relationships.md)
-    1. [Queries](08d-ORM-queries.md)
+1. :heavy_check_mark: [Sequelize](https://github.com/kenziebottoms/nss-back-02-sandcastle) :arrow_upper_right:
+    1. Models
+    1. Sync
+    1. Seeding
+    1. Relationships
+    1. Queries
 
 ### Authentication
 
